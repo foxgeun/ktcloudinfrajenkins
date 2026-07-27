@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials-id') // Jenkins에 등록된 DockerHub 인증 ID
+        DOCKERHUB_CREDENTIALS = credentials('parksugeun') // Jenkins에 등록된 DockerHub 인증 ID
         IMAGE_NAME = 'dockerhubid/ktcloudinfra4:0727'
     }
 
