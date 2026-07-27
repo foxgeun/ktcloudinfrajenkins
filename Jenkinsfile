@@ -13,9 +13,10 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
+                    // Jenkins 크리덴셜 ID를 이용해 Docker Hub에 안전하게 로그인 후 빌드 및 푸시 수행
                     docker.withRegistry('https://index.docker.io/v1/', "${DOCKERHUB_CREDENTIALS_ID}") {
-                        def customImage = docker.build("${IMAGE_NAME}")
-                        customImage.push()
+                        sh "docker build -t ${IMAGE_NAME} ."
+                        sh "docker push ${IMAGE_NAME}"
                     }
                 }
             }
