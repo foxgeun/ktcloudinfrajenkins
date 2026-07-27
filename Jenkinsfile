@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('p31644@gmail.com') // Jenkins에 등록된 DockerHub 인증 ID
+        DOCKERHUB_CREDENTIALS = credentials('parksugeun') // Jenkins에 등록된 DockerHub 인증 ID
         IMAGE_NAME = 'dockerhubid/ktcloudinfra4:0727'
     }
 
@@ -21,7 +21,7 @@ pipeline {
                     def customImage = docker.build("${env.IMAGE_NAME}")
                     
                     // 2. DockerHub 로그인 및 Push
-                    docker.withRegistry('https://index.docker.io/v1/', 'p31644@gmail.com') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'parksugeun') {
                         customImage.push()
                     }
                 }
